@@ -1,0 +1,640 @@
+#barra-superior {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 54px; /*Anchura de la barra*/
+    position: sticky; /*Para que la barra se quede fija*/
+    z-index: 101; /*Para que la barra se quede fija*/
+    border-bottom: 4px solid #00A0F0; /*Línea de debajo del menú, si no queréis borrad esta línea*/
+    background: #333333; /*Color de fondo de la barra*/
+}
+
+.menu > li {
+    float: left;
+}
+
+.menu {
+    margin: 0 auto;
+    width: 80%; /*Ancho del menú dentro de la barra, variaremos este valor hasta conseguir el que buscamos*/
+}
+
+.menu li a {
+    color: #fafafa; /*Color de las letras de las pestañas*/
+    font: normal normal 15px inherit; /*Tamaño y tipografía de las pestañas*/
+    text-transform: uppercase;
+
+    letter-spacing: 2px; /*Espaciado entre caracteres, si no queréis borrad la línea*/
+    text-decoration: none;
+    padding: 10px 5%;
+    display: block;
+    cursor: pointer;
+}
+
+.menu li a:hover {
+    color: #fafafa; /*Color de las pestañas al pasar el ratón por encima*/
+    background-color: #454545; /*Color de fondo de las pestañas al pasar el ratón por encima*/
+}
+.table-test{
+    border-collapse: collapse;
+    border: 1px solid red;
+    color: #fafafa;
+    width:75%;
+    margin-left:5%;
+    margin-right:20%;
+    text-align: center;
+}
+.table-hidden{
+
+}
+.table-show{
+
+  border-collapse: collapse;
+  color: #fafafa;
+  width:75%;
+  margin-left:5%;
+  margin-right:20%;
+  text-align: center;
+}
+tr, td{
+    padding: 5px;
+    border-collapse: collapse;
+
+}
+th{
+    background: #54767f;
+}
+.minitable{
+  border-collapse: collapse;
+  color: #fafafa;
+  width:90%;
+  margin-left:5%;
+  margin-right:5%;
+  text-align: center;
+}
+
+.minitable-test{
+    border-collapse: collapse;
+    border: 1px solid red;
+    color: #fafafa;
+    width:90%;
+    margin-left:5%;
+    margin-right:5%;
+    text-align: center;
+}
+.signal {
+    z-index: 40;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: solid 5px white;
+    position: absolute;
+    left:36%;
+    top:36%;
+    animation-name: connecting;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+.img-style{
+    position:absolute;
+    display: block;
+    position:absolute;
+    top:40%;
+    left:40%;
+}
+.non{
+    z-index:-1;
+    position:relative;
+    height:100px;
+    width: 100px;
+
+}
+
+/* Standard syntax */
+@keyframes connecting {
+    0%   {transform: scale(1);}
+    25%  {transform: scale(1.2);}
+    50%  {transform: scale(1.4);}
+    75%  {transform: scale(1.6);}
+    100% {transform: scale(1.8);}
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    max-height: 100%;
+    font-family: 'Lato' , sans-serif;
+    line-height: 1.5em;
+}
+
+#header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 54px;
+    overflow: hidden; /* Disables scrollbars on the header frame. To enable scrollbars, change "hidden" to "scroll" */
+    border-bottom: 4px solid #00A0F0;
+}
+
+#nav {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    bottom: 0;
+    width: 230px;
+    overflow: auto; /* Scrollbars will appear on this frame only when there's enough content to require scrolling. To disable scrollbars, change to "hidden", or use "scroll" to enable permanent scrollbars */
+    background: #06647F;
+    height: 100%;
+}
+
+#logo {
+    z-index: 1000;
+    left: 10px;
+    right:100px;
+    position: fixed;
+}
+
+main {
+    position: fixed;
+    top: 50px; /* Set this to the height of the header */
+    left: 230px;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    height: 100%;
+    background: #213958;
+    color:#fafafa;
+}
+
+.innertube {
+    margin: 15px; /* Provides padding for the content */
+}
+
+p {
+    color: #555;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul a {
+    color: #fafafa;
+    text-decoration: none;
+}
+
+/*IE6 fix*/
+* html body{
+    padding: 50px 0 0 230px; /* Set the first value to the height of the header and last value to the width of the nav */
+}
+
+* html main{
+    height: 100%;
+    width: 100%;
+}
+
+/* -------------------- Select Box Styles: bavotasan.com Method (with special adaptations by ericrasch.com) */
+/* -------------------- Source: http://bavotasan.com/2011/style-select-box-using-only-css/ */
+.styled-select {
+    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+    height: 29px;
+    overflow: hidden;
+    width: 50%;
+}
+
+.styled-select select {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    height: 29px;
+    padding: 5px; /* If you add too much padding here, the options won't show in IE */
+    width: 268px;
+}
+
+.styled-select.slate {
+    background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
+    height: 34px;
+    width: 240px;
+}
+
+.styled-select.slate select {
+    border: 1px solid #ccc;
+    font-size: 16px;
+    height: 34px;
+    width: 268px;
+}
+
+/* -------------------- Rounded Corners */
+.rounded {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.semi-square {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+/* -------------------- Colors: Background */
+.slate   { background-color: #ddd; }
+.green   { background-color: #779126; }
+.blue    { background-color: #3b8ec2; }
+.yellow  { background-color: #eec111; }
+.black   { background-color: #333333; }
+
+/* -------------------- Colors: Text */
+.slate select   { color: #000; }
+.green select   { color: #fff; }
+.blue select    { color: #fff; }
+.yellow select  { color: #000; }
+.black select   { color: #fff; }
+
+
+/* -------------------- Select Box Styles: danielneumann.com Method */
+/* -------------------- Source: http://danielneumann.com/blog/how-to-style-dropdown-with-css-only/ */
+#mainselection select {
+    border: 0;
+    color: #EEE;
+    background: transparent;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 2px 10px;
+    width: 378px;
+    *width: 350px;
+    *background: #58B14C;
+    -webkit-appearance: none;
+}
+
+#mainselection {
+    overflow:hidden;
+    width:350px;
+    -moz-border-radius: 9px 9px 9px 9px;
+    -webkit-border-radius: 9px 9px 9px 9px;
+    border-radius: 9px 9px 9px 9px;
+    box-shadow: 1px 1px 11px #330033;
+    background: #58B14C url("http://i62.tinypic.com/15xvbd5.png") no-repeat scroll 319px center;
+}
+
+
+/* -------------------- Select Box Styles: stackoverflow.com Method */
+/* -------------------- Source: http://stackoverflow.com/a/5809186 */
+select#soflow, select#soflow-color {
+    -webkit-appearance: button;
+    -webkit-border-radius: 2px;
+    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    -webkit-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    -webkit-user-select: none;
+    background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+    background-position: 97% center;
+    background-repeat: no-repeat;
+    border: 1px solid #AAA;
+    color: #555;
+    font-size: inherit;
+    margin: 20px;
+    overflow: hidden;
+    padding: 5px 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 300px;
+}
+
+select#soflow-color {
+    color: #fff;
+    background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#779126, #779126 40%, #779126);
+    background-color: #779126;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    padding-left: 15px;
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src:url('../fonts/icomoon/icomoon.eot');
+    src:url('../fonts/icomoon/icomoon.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon/icomoon.woff') format('woff'),
+    url('../fonts/icomoon/icomoon.ttf') format('truetype'),
+    url('../fonts/icomoon/icomoon.svg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* General button style (reset) */
+.btn {
+    border: none;
+    font-family: inherit;
+    font-size: 8px;
+    color: inherit;
+    background: none;
+    cursor: pointer;
+    padding: 12px 30px;
+    display: inline-block;
+    margin: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.btn:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+/* Pseudo elements for icons */
+.btn:before,
+.icon-heart:after,
+.icon-star:after,
+.icon-plus:after,
+.icon-file:before {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+.icon-arrow-right:before {
+    content: "\e00d";
+}
+
+.icon-arrow-left:before {
+    content: "\e003";
+}
+
+.icon-plus:before,
+.icon-plus:after {
+    content: "\e011";
+}
+
+.icon-minus:before {
+    content: "\e012";
+}
+
+.icon-file:before {
+    content: "\e004";
+}
+
+.icon-remove-2:before {
+    content: "\e005";
+}
+/* Button 4 */
+.btn-4 {
+    border-radius: 50px;
+    border: 3px solid #fff;
+    color: #fff;
+    overflow: hidden;
+}
+
+.btn-4:active {
+    border-color: #00c9ff;
+    color: #00c9ff;
+}
+
+.btn-4:hover {
+    background: #00c9ff;
+}
+
+.btn-4:before {
+    position: absolute;
+    height: 100%;
+    font-size: 125%;
+    line-height: 3.5;
+    color: #fff;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.btn-4:active:before {
+    color: #00c9ff;
+}
+
+/* Button 4a */
+.btn-4a:before {
+    left: 130%;
+    top: 0;
+}
+
+.btn-4a:hover:before {
+    left: 80%;
+}
+
+/* Button 4b */
+.btn-4b:before {
+    left: -50%;
+    top: 0;
+}
+
+.btn-4b:hover:before {
+    left: 10%;
+}
+
+/* Button 4c */
+.btn-4c:before {
+    left: 70%;
+    opacity: 0;
+    top: 0;
+}
+
+.btn-4c:hover:before {
+    left: 80%;
+    opacity: 1;
+}
+
+/* Button 4d */
+.btn-4d:before {
+    left: 30%;
+    opacity: 0;
+    top: 0;
+}
+
+.btn-4d:hover:before {
+    left: 10%;
+    opacity: 1;
+}
+
+
+.edge{
+    height:50px;
+    width:40px;
+    position:absolute;
+    left:40px;
+    right:40px;
+    top:0;
+    bottom:0;
+    margin:auto;
+}
+.conection{
+    opacity: 0.5;
+    border-top: 4px dashed #00c9ff;
+    width: 200px;
+    top:25%;
+    left:0;
+    position:relative;
+
+}
+.container {
+    height:50px;
+    width:40px;
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto;
+}
+
+.box {
+    position:relative;
+    height:50px;
+    width:40px;
+    animation: box 5s infinite linear;
+}
+
+.border {
+    background:#00c9ff;
+    position:absolute;
+}
+
+.border.one {
+    height:3px;
+    top:0;
+    left:0;
+    animation: border-one 5s infinite linear;
+}
+
+.border.two {
+    top:0;
+    right:0;
+    height:100%;
+    width:3px;
+    animation: border-two 5s infinite linear;
+}
+
+.border.three {
+    bottom:0;
+    right:0;
+    height:3px;
+    width:100%;
+    animation: border-three 5s infinite linear;
+}
+
+.border.four {
+    bottom:0;
+    left:0;
+    height:100%;
+    width:3px;
+    animation: border-four 5s infinite linear;
+}
+
+.line {
+    height:3px;
+    background:#00c9ff;
+    position:absolute;
+    width:0%;
+    left:25%;
+}
+
+.line.one {
+    top:25%;
+    width:0%;
+    animation: line-one 5s infinite linear;
+}
+
+.line.two {
+    top:45%;
+    animation: line-two 5s infinite linear;
+}
+
+.line.three {
+    top:65%;
+    animation: line-three 5s infinite linear;
+}
+
+@keyframes border-one {
+    0%   {width:0;}
+    10%  {width:100%;}
+    100% {width:100%;}
+}
+
+@keyframes border-two {
+    0%   {height:0;}
+    10%  {height:0%;}
+    20%  {height:100%;}
+    100% {height:100%;}
+}
+
+@keyframes border-three {
+    0%   {width:0;}
+    20%  {width:0%;}
+    30%  {width:100%;}
+    100% {width:100%;}
+}
+
+@keyframes border-four {
+    0%   {height:0;}
+    30%  {height:0%;}
+    40%  {height:100%;}
+    100% {height:100%;}
+}
+
+@keyframes line-one {
+    0%   {left:25%;width:0;}
+    40%  {left:25%;width:0%;}
+    43%  {left:25%;width:50%;}
+    52%  {left:25%;width:50%;}
+    54%  {left:25%;width:0% }
+    55%  {right:25%;left:auto;}
+    63%  {width:10%;right:25%;left:auto;}
+    100% {width:10%;right:25%;left:auto;}
+}
+
+@keyframes line-two {
+    0%   {width:0;}
+    42%  {width:0%;}
+    45%  {width:50%;}
+    53%  {width:50%;}
+    54%  {width:0% }
+    60%  {width:50%}
+    100% {width:50%;}
+}
+
+@keyframes line-three {
+    0%   {width:0;}
+    45%  {width:0%;}
+    48%  {width:50%;}
+    51%  {width:50%;}
+    52%  {width:0% }
+    100% {width:0%;}
+}
+
+@keyframes box {
+    0%   {opacity:1;margin-left:0px;height:40px;width:30px;}
+    55%  {margin-left:0px;height:40px;width:30px;}
+    60%  {margin-left:0px;height:25px;width:40px;}
+    74%  {msthin-left:0;}
+    80%  {margin-left:100px;opacity:1;}
+    90% {height:25px;width:40px;margin-left:190px;opacity:0;}
+    100% {opacity:0;}
+}

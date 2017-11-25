@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #213958;
+}
+#barra-superior {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        background: #333333; /*Color de fondo de la barra*/
+        height: 40px; /*Anchura de la barra*/
+        border-bottom: 4px solid #00A0F0; /*Línea de debajo del menú, si no queréis borrad esta línea*/
+        position: sticky; /*Para que la barra se quede fija*/
+        z-index: 101; /*Para que la barra se quede fija*/
+    }
+
+    ul, ol {
+        list-style: none;
+    }
+
+    .menu > li {
+        float: left;
+    }
+
+    .menu {
+        margin: 0 auto;
+        width: 90%; /*Ancho del menú dentro de la barra, variaremos este valor hasta conseguir el que buscamos*/
+    }
+
+    .menu li a {
+        color: #fafafa; /*Color de las letras de las pestañas*/
+        font: normal normal 15px inherit; /*Tamaño y tipografía de las pestañas*/
+        text-transform: uppercase;
+
+        letter-spacing: 2px; /*Espaciado entre caracteres, si no queréis borrad la línea*/
+        text-decoration: none;
+        padding: 10px 5%;
+        display: block;
+        cursor: pointer;
+    }
+
+    .menu li a:hover {
+        color: #fafafa; /*Color de las pestañas al pasar el ratón por encima*/
+        background-color: #454545; /*Color de fondo de las pestañas al pasar el ratón por encima*/
+    }
+
+
+.rest {
+    margin: 5px
+}
+.signal {
+    z-index: 40;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: solid 5px white;
+    position: absolute;
+    left:36%;
+    top:36%;
+    animation-name: connecting;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+.img-style{
+    position:absolute;
+    display: block;
+    position:absolute;
+    top:40%;
+    left:40%;
+}
+.non{
+    z-index:-1;
+    position:fixed;
+    height:100px;
+    width: 100px;
+
+}
+
+/* Standard syntax */
+@keyframes connecting {
+    0%   {transform: scale(1);}
+    25%  {transform: scale(1.2);}
+    50%  {transform: scale(1.4);}
+    75%  {transform: scale(1.6);}
+    100% {transform: scale(1.8);}
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    height: 50%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 15px;
+}
+
+#welcome{
+    color:white;
+}

@@ -1,0 +1,244 @@
+<html>
+<head>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <title>Administrador de la red</title>
+    <script type="text/javascript" src="../dist/vis.js"></script>
+    <link href="../dist/vis-network.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js\jquery-3.2.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="..\css\MainStyle.css"/>
+</head>
+
+<body>
+<header id="header">
+    <nav id="barra-superior">
+        <img id="logo" src="https://k60.kn3.net/1/1/C/A/4/3/D89.png">
+        <ul class='menu'>
+            <li><a href='file:///C:\Users\karin\Desktop\PacketTEC web site\index.html'>Inicio</a></li>
+            <li><a href="file:///C:\Users\karin\Desktop\PacketTEC web site\pages\NetworkManager.html" >Administrador de red</a></li>
+            <li><a href='file:///C:\Users\karin\Desktop\PacketTEC web site\pages\MessageManager.html'>Administrador de mensajes</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div class="innertube">
+
+        <h1>Red de dispositivos</h1>
+
+        <div style="position: absolute; top: 60px;"><button type="button" id="btnLoader" onclick="loadNetwork()" class="btn btn-4 btn-4c ">Cargar red</button></div>
+<div style="top: 65px; height: 80%; position: relative">
+  <div id="mynetwork"></div>
+      </div>
+      </div>
+    </main>
+
+<nav id="nav">
+    <div class="innertube">
+      <table>
+        <tr>
+          <td>
+            <h1>Eliminar conexi&oacute;n</h1>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+              <div class="styled-select black rounded">
+                <select id="delete-drop">
+
+                </select>
+              </div>
+              <button type="button" class="btn btn-4 btn-4c icon-arrow-right" id="btnSearch" onclick="CreateTableFromJSON()">Eliminar</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+</nav>
+
+
+<script type="text/javascript">
+function loadSelect(){
+  var option1 = createElement("option");
+  var dropdown = getElementById("delete-drop");
+  option1.innerHTML = "Karina" + " " + "-" + " " + "chizco";
+  dropdown.appendChild(option1);
+  dropdown.value = "karina-chizco";
+
+}
+function loadNetwork(){
+
+  var DIR = 'https://k60.kn3.net/F/9/2/C/B/4/495.png';
+    // create an array with nodes
+    var nodes = new vis.DataSet([
+      {id: 1, label: 'Karina', image: DIR, shape: 'image',font: {color:'#fafafa'}},
+      {id: 2, label: 'Fabian', image: DIR, shape: 'image',font: {color:'#fafafa'}},
+      {id: 3, label: 'alejandro', image: DIR, shape: 'image',font: {color:'#fafafa'}},
+      {id: 4, label: 'Chizco',image: DIR, shape: 'image',font: {color:'#fafafa'}},
+      {id: 5, label: 'Bot',image: DIR, shape: 'image',font: {color:'#fafafa'}}
+    ]);
+
+    // create an array with edges
+    var edges = new vis.DataSet([
+      {from: 1, to: 3, label: '1', font: {align: 'middle'}},
+      {from: 1, to: 2, label: '6', font: {align: 'middle'}},
+      {from: 2, to: 4, label: '10', font: {align: 'middle'}},
+      {from: 2, to: 5, label: '3', font: {align: 'middle'}},
+      {from:3, to:4, label: '10', font: {align: 'middle'}},
+      {from:1, to:4, label: '1', font: {align: 'middle'}}
+    ]);
+
+    // create a network
+    var container = document.getElementById('mynetwork');
+    var data = {
+      nodes: nodes,
+      edges: edges
+    };
+    var options = {
+      nodes: {
+          shapeProperties: {
+            useImageSize:true
+          }
+        },
+        edges: {
+          color: 'lightgray',
+          width: 3
+        }
+    };
+    var network = new vis.Network(container, data, options);
+    loadSelect();
+}
+
+    /**
+     * Funci�n onclick del bot�n btnLoader
+     * @Param: array: recibe un array con la cantidad de nodos y seg�n su
+     * peso los organiza en una tabla
+     *
+     * La funci�n crea din�micamente elementos html y los a�ade a la p�gina,
+     * la animaci�n se hace con CSS unicamente
+     */
+    function createGraph(array) {
+        createGraph2(array);
+        for(var i = 0; i < array.length; i++) {
+            if (array[i] === 1) {
+                var signal = document.createElement("div");
+                signal.className = "signal";
+                var img = document.createElement("img");
+                img.src = "../images/smartphone(4).png";
+                var container = document.createElement("div");
+                container.className = "img-style";
+                container.appendChild(signal);
+                container.appendChild(img);
+                var parent = document.createElement("div");
+                parent.className = "non";
+                parent.appendChild(container);
+                var column = document.createElement("td");
+                column.appendChild(parent);
+                var row = document.createElement("tr");
+                row.appendChild(column);
+                document.getElementById("GraphGrid").appendChild(row);
+
+            } else if(array[i] === 2){
+                var signal = document.createElement("div");
+                signal.className = "signal";
+                var img = document.createElement("img");
+                img.src = "../images/smartphone(4).png";
+                var container = document.createElement("div");
+                container.className = "img-style";
+                container.appendChild(signal);
+                container.appendChild(img);
+                var parent = document.createElement("div");
+                parent.className = "non";
+                parent.appendChild(container);
+                var column = document.createElement("td");
+                column.appendChild(parent);
+                document.getElementById("first-row").appendChild(column);
+            }
+            else{
+                var signal = document.createElement("div");
+                signal.className = "signal";
+                var img = document.createElement("img");
+                img.src = "../images/smartphone(4).png";
+                var container = document.createElement("div");
+                container.className = "img-style";
+                container.appendChild(signal);
+                container.appendChild(img);
+                var parent = document.createElement("div");
+                parent.className = "non";
+                parent.appendChild(container);
+                var column = document.createElement("td");
+                column.appendChild(parent);
+                document.getElementById("second-row").appendChild(column);
+            }
+        }
+    }
+    /**
+     * Funci�n onclick del bot�n btnLoader
+     * @Param: array: recibe un array con la cantidad de nodos y seg�n su
+     * peso cambia la coordenada x (para que se vea mejor)
+     *
+     * La funci�n crea din�micamente elementos html y los a�ade a la p�gina,
+     * la animaci�n se hace con CSS unicamente
+     * */
+   function createGraph2(array) {
+       var x = 50;
+       var y = 0;
+       for (var i = 0; i < array.length; i++) {
+           var grandDiv = document.createElement("div");
+           grandDiv.className = "non";
+           var parentDiv = document.createElement("div");
+           parentDiv.className = "img-style";
+           var signal = document.createElement("div");
+           signal.className = "signal";
+           var img = document.createElement("img");
+           img.src = "../images/smartphone(4).png";
+           parentDiv.appendChild(img);
+           grandDiv.appendChild(parentDiv);
+           grandDiv.appendChild(signal);
+           if (array[i] === 1) {
+               x = x + 20;
+               y = y - 15;
+               grandDiv.style = "left:" + x.toString() + "px; top: " + y.toString() + "px;";
+
+           }
+           else {
+               y = y + 10;
+               x = x + 55;
+               grandDiv.style = "left:" + x + "px; top: " + y + "px;";
+           }
+
+           document.getElementById("Graph-container").appendChild(grandDiv);
+       }
+   }
+   function getJSON(){
+     var result = {
+     	"ids" : [ "karina" ,"fabian" , "alejandro" ,"chizco"
+    ] ,
+
+     	"connections" : [
+     						{
+     							"start" : "karina" ,
+     							"end" : "fabian" ,
+     							"weight" : "3"
+     						} ,
+     						{
+     							"start" : "chizco" ,
+     							"end" : "karina" ,
+     							"weight" : "6"
+     						} ,
+     						{
+     							"start" : "alejandro" ,
+     							"end" : "chizco" ,
+     							"weight" : "7"
+     						} ,
+     						{
+     							"start" : "fabian" ,
+     							"end" : "alejandro" ,
+     							"weight" : "2"
+     						}
+     					]
+     }
+   }
+    //window.onload=createGraph([1,2,2,1,2]);
+</script>
+</body>
+</html>
