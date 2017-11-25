@@ -1,39 +1,41 @@
+<!doctype html>
 <html>
 <head>
+  <meta charset="utf-8" />
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
+  <title>Administrador de la red</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <title>Administrador de la red</title>
-    <script type="text/javascript" src="js\jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="../dist/vis.js"></script>
+  <link href="../dist/vis-network.min.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="..\css\MainStyle.css"/>
-    <script type="text/javascript" src="../dist/vis.js"></script>
-    <link href="../dist/vis-network.min.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
-<header id="header">
+  <header id="header">
     <nav id="barra-superior">
-        <img id="logo" src="https://k60.kn3.net/1/1/C/A/4/3/D89.png">
-        <ul class='menu'>
-            <li><a href='file:///C:\Users\karin\Desktop\PacketTEC web site\index.html'>Inicio</a></li>
-            <li><a href="file:///C:\Users\karin\Desktop\PacketTEC web site\pages\NetworkManager.html" >Administrador de red</a></li>
-            <li><a href='file:///C:\Users\karin\Desktop\PacketTEC web site\pages\MessageManager.html'>Administrador de mensajes</a></li>
-        </ul>
+      <img id="logo" src="https://k60.kn3.net/1/1/C/A/4/3/D89.png">
+      <ul class='menu'>
+        <li><a href='file:///C:\Users\karin\Desktop\PacketTEC web site\index.html'>Inicio</a></li>
+        <li><a href="file:///C:\Users\karin\Desktop\PacketTEC web site\pages\NetworkManager.html" >Administrador de red</a></li>
+        <li><a href='file:///C:\Users\karin\Desktop\PacketTEC web site\pages\MessageManager.html'>Administrador de mensajes</a></li>
+      </ul>
     </nav>
-</header>
+  </header>
 
-<main>
+  <main>
     <div class="innertube">
 
-        <h1>Red de dispositivos</h1>
+      <h1>Red de dispositivos</h1>
 
-        <div style="position: absolute; top: 60px;"><button type="button" id="btnLoader" onclick="loadNetwork()" class="btn btn-4 btn-4c ">Cargar red</button></div>
-<div style="top: 65px; height: 80%; position: relative">
-  <div id="mynetwork"></div>
-      </div>
-      </div>
-    </main>
 
-<nav id="nav">
+      <div style="position: absolute; top: 60px;"><button type="button" id="btnLoader" onclick="loadNetwork()" class="btn btn-4 btn-4c ">Cargar red</button></div>
+      <div style="top: 65px; height: 80%; position: relative;">
+        <div id="mynetwork"></div>
+      </div>
+    </div>
+  </main>
+
+  <nav id="nav">
     <div class="innertube">
       <table>
         <tr>
@@ -43,33 +45,25 @@
         </tr>
         <tr>
           <td colspan="2">
-              <div class="styled-select black rounded">
-                <select id="delete-drop">
+            <div class="styled-select black rounded">
+              <select id="delete-drop">
 
-                </select>
-              </div>
-              <button type="button" class="btn btn-4 btn-4c icon-arrow-right" id="btnSearch" onclick="CreateTableFromJSON()">Eliminar</button>
+              </select>
+            </div>
+            <button type="button" class="btn btn-4 btn-4c icon-arrow-right" id="btnSearch" onclick="getJSON()">Eliminar</button>
           </td>
         </tr>
       </table>
     </div>
-</nav>
+  </nav>
 
 
-<script type="text/javascript">
-function loadSelect(){
-  var option1 = createElement("option");
-  var dropdown = getElementById("delete-drop");
-  option1.innerHTML = "Karina" + " " + "-" + " " + "chizco";
-  dropdown.appendChild(option1);
-  dropdown.value = "karina-chizco";
-
-}
-function loadNetwork(){
-
-  var DIR = 'https://k60.kn3.net/F/9/2/C/B/4/495.png';
+  <script type="text/javascript">
+  function loadNetwork(){
+    var data = getJSON();
+    var DIR = 'https://k60.kn3.net/F/9/2/C/B/4/495.png';
     // create an array with nodes
-    var nodes = new vis.DataSet([
+    /*var nodes = new vis.DataSet([
       {id: 1, label: 'Karina', image: DIR, shape: 'image',font: {color:'#fafafa'}},
       {id: 2, label: 'Fabian', image: DIR, shape: 'image',font: {color:'#fafafa'}},
       {id: 3, label: 'alejandro', image: DIR, shape: 'image',font: {color:'#fafafa'}},
@@ -85,7 +79,9 @@ function loadNetwork(){
       {from: 2, to: 5, label: '3', font: {align: 'middle'}},
       {from:3, to:4, label: '10', font: {align: 'middle'}},
       {from:1, to:4, label: '1', font: {align: 'middle'}}
-    ]);
+    ]);*/
+    var nodes = new vis.DataSet(data[0]);
+    var edges = new vis.DataSet(data[1]);
 
     // create a network
     var container = document.getElementById('mynetwork');
@@ -95,63 +91,79 @@ function loadNetwork(){
     };
     var options = {
       nodes: {
-          shapeProperties: {
-            useImageSize:true
-          }
-        },
-        edges: {
-          color: 'black',
-          width: 3
-        },
-        manipulation: {
-  				enabled: true,
-          deleteEdge: function(edgeData,callback) {
-
-        var r = confirm("¿Desea eliminar la conexión? (Enviar request al server)");
-        if (r === true) {
-          callback(edgeData);
+        shapeProperties: {
+          useImageSize:true
         }
+      },
+      edges: {
+        color: 'black',
+        width: 3
+      },
+      manipulation: {
+        enabled: true,
+        deleteEdge: function(edgeData,callback) {
 
-    }
-  			}
+          var r = confirm("¿Desea eliminar la conexión? (Enviar request al server)");
+          if (r === true) {
+            callback(edgeData);
+          }
+
+        }
+      }
     };
     var network = new vis.Network(container, data, options);
-    loadSelect();
-}
-function deletion(callback, nodes){
-  alert("delete");
+  }
+
+  function getJSON(){
+    var result = {
+      "ids": ["karina", "fabian", "alejandro", "chizco"],
+      "connections": [{
+        "start": "karina",
+        "end": "fabian",
+        "weight": "3"
+      },
+      {
+        "start": "chizco",
+        "end": "karina",
+        "weight": "6"
+      },
+      {
+        "start": "alejandro",
+        "end": "chizco",
+        "weight": "7"
+      },
+      {
+        "start": "fabian",
+        "end": "alejandro",
+        "weight": "2"
+      }
+    ]
+  };
+  var res = JSON.stringify(result);
+  var json = JSON.parse(res);
+  console.log(json);
+  var DIR = 'https://k60.kn3.net/F/9/2/C/B/4/495.png';
+  var nodes = [];
+  for (var i = 0; i < json.ids.length; i++) {
+    var node = {id: json.ids[i], label: json.ids[i], image: DIR, shape: 'image',font: {color:'#fafafa'}}
+    nodes.push(node);
+
+  }
+  console.log(nodes);
+  var edges = [];
+  for (var i = 0; i < json.connections.length; i++) {
+      var current = json.connections[i];
+      var edge = {from: current.start, to: current.end, label: current.weight, font: {align: 'middle'}}
+      edges.push(edge);
+
+  }
+  console.log(edges);
+  var data = [nodes, edges];
+  console.log(data);
+  return data;
 }
 
-   function getJSON(){
-     var result = {
-     	"ids" : [ "karina" ,"fabian" , "alejandro" ,"chizco"
-    ] ,
 
-     	"connections" : [
-     						{
-     							"start" : "karina" ,
-     							"end" : "fabian" ,
-     							"weight" : "3"
-     						} ,
-     						{
-     							"start" : "chizco" ,
-     							"end" : "karina" ,
-     							"weight" : "6"
-     						} ,
-     						{
-     							"start" : "alejandro" ,
-     							"end" : "chizco" ,
-     							"weight" : "7"
-     						} ,
-     						{
-     							"start" : "fabian" ,
-     							"end" : "alejandro" ,
-     							"weight" : "2"
-     						}
-     					]
-     }
-   }
-    //window.onload=createGraph([1,2,2,1,2]);
 </script>
 </body>
 </html>
