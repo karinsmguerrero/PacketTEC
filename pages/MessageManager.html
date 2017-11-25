@@ -1,9 +1,8 @@
 <html>
 <head>
-  
+
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <title>Administrador de mensajes</title>
-  <script type="text/javascript" src="js\jquery-3.2.1.js"></script>
   <link rel="stylesheet" type="text/css" href="..\css\MainStyle.css"/>
 
 </head>
@@ -53,11 +52,12 @@
       <div id="showData">
         <table id="resultTable" class="table-show">
           <tr>
-            <th>ID</th>
-            <th>Destinatario</th>
             <th>Remitente</th>
+            <th>Destinatario</th>
             <th>Mensaje</th>
             <th>Adjunto</th>
+            <th>ID</th>
+            <th>Tipo de adjunto</th>
           </tr>
         </table>
       </div>
@@ -67,10 +67,9 @@
 
   <script>
   function getResult(){
-
-    var result = [{"Id":"123", "from": "Karina", "to":"alejandro", "msg": "Hola", "attch":"img.png"},
-                   {"Id":"124", "from": "Karina", "to":"fabian", "msg": "Hola", "attch":"img_hola.png"},
-                   {"Id":"125", "from": "Karina", "to":"chizco", "msg": "Holis", "attch":"none"}];
+    var result = [{"from" : "karina" , "to" : "chizco" , "body" : "holi" ,"attachment" : "img" ,"id" : "123" ,"attType" : "png"},
+  {"from" : "karina" , "to" : "alejandro" , "body" : "holi" ,"attachment" : "img" ,"id" : "124" ,"attType" : "png"},
+{"from" : "karina" , "to" : "fabian" , "body" : "holi" ,"attachment" : "img" ,"id" : "125" ,"attType" : "png"}];
                    return result;
   }
     function CreateTableFromJSON() {
