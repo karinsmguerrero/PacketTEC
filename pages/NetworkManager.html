@@ -3,10 +3,10 @@
 
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <title>Administrador de la red</title>
-    <script type="text/javascript" src="../dist/vis.js"></script>
-    <link href="../dist/vis-network.min.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js\jquery-3.2.1.js"></script>
     <link rel="stylesheet" type="text/css" href="..\css\MainStyle.css"/>
+    <script type="text/javascript" src="../dist/vis.js"></script>
+    <link href="../dist/vis-network.min.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
@@ -100,115 +100,28 @@ function loadNetwork(){
           }
         },
         edges: {
-          color: 'lightgray',
+          color: 'black',
           width: 3
+        },
+        manipulation: {
+  				enabled: true,
+          deleteEdge: function(edgeData,callback) {
+
+        var r = confirm("¿Desea eliminar la conexión? (Enviar request al server)");
+        if (r === true) {
+          callback(edgeData);
         }
+
+    }
+  			}
     };
     var network = new vis.Network(container, data, options);
     loadSelect();
 }
+function deletion(callback, nodes){
+  alert("delete");
+}
 
-    /**
-     * Funci�n onclick del bot�n btnLoader
-     * @Param: array: recibe un array con la cantidad de nodos y seg�n su
-     * peso los organiza en una tabla
-     *
-     * La funci�n crea din�micamente elementos html y los a�ade a la p�gina,
-     * la animaci�n se hace con CSS unicamente
-     */
-    function createGraph(array) {
-        createGraph2(array);
-        for(var i = 0; i < array.length; i++) {
-            if (array[i] === 1) {
-                var signal = document.createElement("div");
-                signal.className = "signal";
-                var img = document.createElement("img");
-                img.src = "../images/smartphone(4).png";
-                var container = document.createElement("div");
-                container.className = "img-style";
-                container.appendChild(signal);
-                container.appendChild(img);
-                var parent = document.createElement("div");
-                parent.className = "non";
-                parent.appendChild(container);
-                var column = document.createElement("td");
-                column.appendChild(parent);
-                var row = document.createElement("tr");
-                row.appendChild(column);
-                document.getElementById("GraphGrid").appendChild(row);
-
-            } else if(array[i] === 2){
-                var signal = document.createElement("div");
-                signal.className = "signal";
-                var img = document.createElement("img");
-                img.src = "../images/smartphone(4).png";
-                var container = document.createElement("div");
-                container.className = "img-style";
-                container.appendChild(signal);
-                container.appendChild(img);
-                var parent = document.createElement("div");
-                parent.className = "non";
-                parent.appendChild(container);
-                var column = document.createElement("td");
-                column.appendChild(parent);
-                document.getElementById("first-row").appendChild(column);
-            }
-            else{
-                var signal = document.createElement("div");
-                signal.className = "signal";
-                var img = document.createElement("img");
-                img.src = "../images/smartphone(4).png";
-                var container = document.createElement("div");
-                container.className = "img-style";
-                container.appendChild(signal);
-                container.appendChild(img);
-                var parent = document.createElement("div");
-                parent.className = "non";
-                parent.appendChild(container);
-                var column = document.createElement("td");
-                column.appendChild(parent);
-                document.getElementById("second-row").appendChild(column);
-            }
-        }
-    }
-    /**
-     * Funci�n onclick del bot�n btnLoader
-     * @Param: array: recibe un array con la cantidad de nodos y seg�n su
-     * peso cambia la coordenada x (para que se vea mejor)
-     *
-     * La funci�n crea din�micamente elementos html y los a�ade a la p�gina,
-     * la animaci�n se hace con CSS unicamente
-     * */
-   function createGraph2(array) {
-       var x = 50;
-       var y = 0;
-       for (var i = 0; i < array.length; i++) {
-           var grandDiv = document.createElement("div");
-           grandDiv.className = "non";
-           var parentDiv = document.createElement("div");
-           parentDiv.className = "img-style";
-           var signal = document.createElement("div");
-           signal.className = "signal";
-           var img = document.createElement("img");
-           img.src = "../images/smartphone(4).png";
-           parentDiv.appendChild(img);
-           grandDiv.appendChild(parentDiv);
-           grandDiv.appendChild(signal);
-           if (array[i] === 1) {
-               x = x + 20;
-               y = y - 15;
-               grandDiv.style = "left:" + x.toString() + "px; top: " + y.toString() + "px;";
-
-           }
-           else {
-               y = y + 10;
-               x = x + 55;
-               grandDiv.style = "left:" + x + "px; top: " + y + "px;";
-           }
-
-           document.getElementById("Graph-container").appendChild(grandDiv);
-       }
-   }
    function getJSON(){
      var result = {
      	"ids" : [ "karina" ,"fabian" , "alejandro" ,"chizco"
